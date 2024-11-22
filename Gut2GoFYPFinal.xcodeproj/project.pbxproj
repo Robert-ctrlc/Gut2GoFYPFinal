@@ -1,0 +1,710 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE885B9D59743E3980EB946A /* Pods_Gut2GoFYPFinal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955DD1F6AD7229EDC3A2DD0 /* Pods_Gut2GoFYPFinal.framework */; };
+		D9AD14AC97C96FAC19DBC106 /* Pods_Gut2GoFYPFinalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B92D5D2A8D04128C0BECF1 /* Pods_Gut2GoFYPFinalTests.framework */; };
+		F6FAE14ED4D70853D414C5C5 /* Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EA3E7FCB4FBE264C0B5D5C3 /* Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B08E2A652CE4F8EC00BDC8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B08E2A4C2CE4F8EA00BDC8FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B08E2A532CE4F8EA00BDC8FB;
+			remoteInfo = Gut2GoFYPFinal;
+		};
+		B08E2A6F2CE4F8EC00BDC8FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B08E2A4C2CE4F8EA00BDC8FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B08E2A532CE4F8EA00BDC8FB;
+			remoteInfo = Gut2GoFYPFinal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2EA3E7FCB4FBE264C0B5D5C3 /* Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48119D793D1B00753A8FCB27 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.release.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5051C461418F67E7415DD9E0 /* Pods-Gut2GoFYPFinalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinalTests.release.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinalTests/Pods-Gut2GoFYPFinalTests.release.xcconfig"; sourceTree = "<group>"; };
+		7165719BD2039786E2E2C634 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.debug.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		95BFEBD440F1A8C38ABC6A54 /* Pods-Gut2GoFYPFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinal.debug.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinal/Pods-Gut2GoFYPFinal.debug.xcconfig"; sourceTree = "<group>"; };
+		9BCC727EA19874CB0E0F9B7B /* Pods-Gut2GoFYPFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinal.release.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinal/Pods-Gut2GoFYPFinal.release.xcconfig"; sourceTree = "<group>"; };
+		B08E2A542CE4F8EA00BDC8FB /* Gut2GoFYPFinal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gut2GoFYPFinal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B08E2A642CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Gut2GoFYPFinalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B08E2A6E2CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Gut2GoFYPFinalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B92D5D2A8D04128C0BECF1 /* Pods_Gut2GoFYPFinalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gut2GoFYPFinalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C955DD1F6AD7229EDC3A2DD0 /* Pods_Gut2GoFYPFinal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gut2GoFYPFinal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB8658BB6C8A2B7DC3D9CF9E /* Pods-Gut2GoFYPFinalTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gut2GoFYPFinalTests.debug.xcconfig"; path = "Target Support Files/Pods-Gut2GoFYPFinalTests/Pods-Gut2GoFYPFinalTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		B08E2A562CE4F8EA00BDC8FB /* Gut2GoFYPFinal */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Gut2GoFYPFinal;
+			sourceTree = "<group>";
+		};
+		B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Gut2GoFYPFinalTests;
+			sourceTree = "<group>";
+		};
+		B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Gut2GoFYPFinalUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B08E2A512CE4F8EA00BDC8FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE885B9D59743E3980EB946A /* Pods_Gut2GoFYPFinal.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A612CE4F8EC00BDC8FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9AD14AC97C96FAC19DBC106 /* Pods_Gut2GoFYPFinalTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A6B2CE4F8EC00BDC8FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6FAE14ED4D70853D414C5C5 /* Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4AA14DA3AF2FD981ABA7955B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95BFEBD440F1A8C38ABC6A54 /* Pods-Gut2GoFYPFinal.debug.xcconfig */,
+				9BCC727EA19874CB0E0F9B7B /* Pods-Gut2GoFYPFinal.release.xcconfig */,
+				7165719BD2039786E2E2C634 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.debug.xcconfig */,
+				48119D793D1B00753A8FCB27 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.release.xcconfig */,
+				DB8658BB6C8A2B7DC3D9CF9E /* Pods-Gut2GoFYPFinalTests.debug.xcconfig */,
+				5051C461418F67E7415DD9E0 /* Pods-Gut2GoFYPFinalTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		9BD522D9A3BA27A2EF14C975 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C955DD1F6AD7229EDC3A2DD0 /* Pods_Gut2GoFYPFinal.framework */,
+				2EA3E7FCB4FBE264C0B5D5C3 /* Pods_Gut2GoFYPFinal_Gut2GoFYPFinalUITests.framework */,
+				B3B92D5D2A8D04128C0BECF1 /* Pods_Gut2GoFYPFinalTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B08E2A4B2CE4F8EA00BDC8FB = {
+			isa = PBXGroup;
+			children = (
+				B08E2A562CE4F8EA00BDC8FB /* Gut2GoFYPFinal */,
+				B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */,
+				B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */,
+				B08E2A552CE4F8EA00BDC8FB /* Products */,
+				4AA14DA3AF2FD981ABA7955B /* Pods */,
+				9BD522D9A3BA27A2EF14C975 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B08E2A552CE4F8EA00BDC8FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B08E2A542CE4F8EA00BDC8FB /* Gut2GoFYPFinal.app */,
+				B08E2A642CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests.xctest */,
+				B08E2A6E2CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B08E2A532CE4F8EA00BDC8FB /* Gut2GoFYPFinal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B08E2A782CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinal" */;
+			buildPhases = (
+				7964C483DEA7645056197BC1 /* [CP] Check Pods Manifest.lock */,
+				B08E2A502CE4F8EA00BDC8FB /* Sources */,
+				B08E2A512CE4F8EA00BDC8FB /* Frameworks */,
+				B08E2A522CE4F8EA00BDC8FB /* Resources */,
+				3E5F99783D83010C129E0E3B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				B08E2A562CE4F8EA00BDC8FB /* Gut2GoFYPFinal */,
+			);
+			name = Gut2GoFYPFinal;
+			productName = Gut2GoFYPFinal;
+			productReference = B08E2A542CE4F8EA00BDC8FB /* Gut2GoFYPFinal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B08E2A632CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B08E2A7B2CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinalTests" */;
+			buildPhases = (
+				C69E99C07B8C353E949786EA /* [CP] Check Pods Manifest.lock */,
+				B08E2A602CE4F8EC00BDC8FB /* Sources */,
+				B08E2A612CE4F8EC00BDC8FB /* Frameworks */,
+				B08E2A622CE4F8EC00BDC8FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B08E2A662CE4F8EC00BDC8FB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */,
+			);
+			name = Gut2GoFYPFinalTests;
+			productName = Gut2GoFYPFinalTests;
+			productReference = B08E2A642CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B08E2A6D2CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B08E2A7E2CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinalUITests" */;
+			buildPhases = (
+				7E672556393FDE11C747ACCC /* [CP] Check Pods Manifest.lock */,
+				B08E2A6A2CE4F8EC00BDC8FB /* Sources */,
+				B08E2A6B2CE4F8EC00BDC8FB /* Frameworks */,
+				B08E2A6C2CE4F8EC00BDC8FB /* Resources */,
+				23B215346A5CEC2FD22EAA43 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B08E2A702CE4F8EC00BDC8FB /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */,
+			);
+			name = Gut2GoFYPFinalUITests;
+			productName = Gut2GoFYPFinalUITests;
+			productReference = B08E2A6E2CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B08E2A4C2CE4F8EA00BDC8FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					B08E2A532CE4F8EA00BDC8FB = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					B08E2A632CE4F8EC00BDC8FB = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B08E2A532CE4F8EA00BDC8FB;
+					};
+					B08E2A6D2CE4F8EC00BDC8FB = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = B08E2A532CE4F8EA00BDC8FB;
+					};
+				};
+			};
+			buildConfigurationList = B08E2A4F2CE4F8EA00BDC8FB /* Build configuration list for PBXProject "Gut2GoFYPFinal" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B08E2A4B2CE4F8EA00BDC8FB;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = B08E2A552CE4F8EA00BDC8FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B08E2A532CE4F8EA00BDC8FB /* Gut2GoFYPFinal */,
+				B08E2A632CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */,
+				B08E2A6D2CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B08E2A522CE4F8EA00BDC8FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A622CE4F8EC00BDC8FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A6C2CE4F8EC00BDC8FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23B215346A5CEC2FD22EAA43 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E5F99783D83010C129E0E3B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal/Pods-Gut2GoFYPFinal-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal/Pods-Gut2GoFYPFinal-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Gut2GoFYPFinal/Pods-Gut2GoFYPFinal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7964C483DEA7645056197BC1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gut2GoFYPFinal-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E672556393FDE11C747ACCC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C69E99C07B8C353E949786EA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Gut2GoFYPFinalTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B08E2A502CE4F8EA00BDC8FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A602CE4F8EC00BDC8FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B08E2A6A2CE4F8EC00BDC8FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B08E2A662CE4F8EC00BDC8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B08E2A532CE4F8EA00BDC8FB /* Gut2GoFYPFinal */;
+			targetProxy = B08E2A652CE4F8EC00BDC8FB /* PBXContainerItemProxy */;
+		};
+		B08E2A702CE4F8EC00BDC8FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B08E2A532CE4F8EA00BDC8FB /* Gut2GoFYPFinal */;
+			targetProxy = B08E2A6F2CE4F8EC00BDC8FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B08E2A762CE4F8EC00BDC8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B08E2A772CE4F8EC00BDC8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B08E2A792CE4F8EC00BDC8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95BFEBD440F1A8C38ABC6A54 /* Pods-Gut2GoFYPFinal.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gut2GoFYPFinal/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B08E2A7A2CE4F8EC00BDC8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BCC727EA19874CB0E0F9B7B /* Pods-Gut2GoFYPFinal.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Gut2GoFYPFinal/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B08E2A7C2CE4F8EC00BDC8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB8658BB6C8A2B7DC3D9CF9E /* Pods-Gut2GoFYPFinalTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gut2GoFYPFinal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gut2GoFYPFinal";
+			};
+			name = Debug;
+		};
+		B08E2A7D2CE4F8EC00BDC8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5051C461418F67E7415DD9E0 /* Pods-Gut2GoFYPFinalTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinalTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gut2GoFYPFinal.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Gut2GoFYPFinal";
+			};
+			name = Release;
+		};
+		B08E2A7F2CE4F8EC00BDC8FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7165719BD2039786E2E2C634 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gut2GoFYPFinal;
+			};
+			name = Debug;
+		};
+		B08E2A802CE4F8EC00BDC8FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48119D793D1B00753A8FCB27 /* Pods-Gut2GoFYPFinal-Gut2GoFYPFinalUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fyp.Gut2GoFYPFinalUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Gut2GoFYPFinal;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B08E2A4F2CE4F8EA00BDC8FB /* Build configuration list for PBXProject "Gut2GoFYPFinal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08E2A762CE4F8EC00BDC8FB /* Debug */,
+				B08E2A772CE4F8EC00BDC8FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B08E2A782CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08E2A792CE4F8EC00BDC8FB /* Debug */,
+				B08E2A7A2CE4F8EC00BDC8FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B08E2A7B2CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08E2A7C2CE4F8EC00BDC8FB /* Debug */,
+				B08E2A7D2CE4F8EC00BDC8FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B08E2A7E2CE4F8EC00BDC8FB /* Build configuration list for PBXNativeTarget "Gut2GoFYPFinalUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B08E2A7F2CE4F8EC00BDC8FB /* Debug */,
+				B08E2A802CE4F8EC00BDC8FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B08E2A4C2CE4F8EA00BDC8FB /* Project object */;
+}
