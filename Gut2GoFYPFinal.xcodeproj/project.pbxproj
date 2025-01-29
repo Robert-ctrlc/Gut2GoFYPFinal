@@ -50,16 +50,6 @@
 			path = Gut2GoFYPFinal;
 			sourceTree = "<group>";
 		};
-		B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Gut2GoFYPFinalTests;
-			sourceTree = "<group>";
-		};
-		B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Gut2GoFYPFinalUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,8 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				B08E2A562CE4F8EA00BDC8FB /* Gut2GoFYPFinal */,
-				B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */,
-				B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */,
 				B08E2A552CE4F8EA00BDC8FB /* Products */,
 				4AA14DA3AF2FD981ABA7955B /* Pods */,
 				9BD522D9A3BA27A2EF14C975 /* Frameworks */,
@@ -174,9 +162,6 @@
 			dependencies = (
 				B08E2A662CE4F8EC00BDC8FB /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				B08E2A672CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests */,
-			);
 			name = Gut2GoFYPFinalTests;
 			productName = Gut2GoFYPFinalTests;
 			productReference = B08E2A642CE4F8EC00BDC8FB /* Gut2GoFYPFinalTests.xctest */;
@@ -196,9 +181,6 @@
 			);
 			dependencies = (
 				B08E2A702CE4F8EC00BDC8FB /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B08E2A712CE4F8EC00BDC8FB /* Gut2GoFYPFinalUITests */,
 			);
 			name = Gut2GoFYPFinalUITests;
 			productName = Gut2GoFYPFinalUITests;
