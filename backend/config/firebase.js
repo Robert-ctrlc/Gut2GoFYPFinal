@@ -1,5 +1,7 @@
 const admin = require("firebase-admin");
-const serviceAccount = require("./gut2gofypfinal-firebase-adminsdk-85nda-1233c27b90.json");
+const path = require("path");
+const serviceAccount = require(path.join(__dirname, "../secrets/gut2gofypfinal-945d770b0216.json"));
+
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),

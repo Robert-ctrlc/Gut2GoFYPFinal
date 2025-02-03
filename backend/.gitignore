@@ -1,0 +1,3 @@
+# Ignore Firebase Admin SDK Key
+backend/secrets/
+backend/secrets/*.json
