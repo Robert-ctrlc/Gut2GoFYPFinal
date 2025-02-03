@@ -3,26 +3,26 @@ const { db } = require("../config/firebase");
 
 const router = express.Router();
 
-// Get all patients
 router.get("/", async (req, res) => {
     try {
         const patientsSnapshot = await db.collection("users").get();
         const patients = patientsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         res.status(200).json(patients);
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch patients." });
+        res.status(500).json({ error: "Failed to fetch patients.", details: error.message });
     }
 });
 
-// Get symptoms for a specific patient
-router.get("/:userId/symptoms", async (req, res) => {
-    const { userId } = req.params;
+
+router.get("/:id", async (req, res) => {
     try {
-        const symptomsSnapshot = await db.collection("symptoms").doc(userId).collection("logs").orderBy("timestamp", "desc").get();
-        const symptoms = symptomsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        res.status(200).json(symptoms);
+        const patientDoc = await db.collection("users").doc(req.params.id).get();
+        if (!patientDoc.exists) {
+            return res.status(404).json({ error: "Patient not found." });
+        }
+        res.status(200).json({ id: patientDoc.id, ...patientDoc.data() });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch symptoms." });
+        res.status(500).json({ error: "Failed to fetch patient.", details: error.message });
     }
 });
 

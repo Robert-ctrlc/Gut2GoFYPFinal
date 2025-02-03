@@ -1,62 +1,53 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const PatientProfile = () => {
-    const { patientId } = useParams();
-    const [patient, setPatient] = useState(null);
-    const [notes, setNotes] = useState("");
-    const [existingNotes, setExistingNotes] = useState([]);
-    const navigate = useNavigate();
+  const { id } = useParams();
+  const [patient, setPatient] = useState(null);
+  const [symptoms, setSymptoms] = useState([]);
 
-    useEffect(() => {
-        axios.get(`http://localhost:5003/patients/${patientId}`)
-            .then(response => setPatient(response.data))
-            .catch(error => console.error("Error fetching patient:", error));
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5002/patients/${id}`)
+      .then((res) => setPatient(res.data))
+      .catch((err) => console.error("Error fetching patient:", err));
 
-        axios.get(`http://localhost:5003/patients/${patientId}/notes`)
-            .then(response => setExistingNotes(response.data))
-            .catch(error => console.error("Error fetching notes:", error));
-    }, [patientId]);
+    axios
+      .get(`http://localhost:5002/patients/${id}/symptoms`)
+      .then((res) => setSymptoms(res.data))
+      .catch((err) => console.error("Error fetching symptoms:", err));
+  }, [id]);
 
-    const handleSaveNote = () => {
-        axios.post(`http://localhost:5003/patients/${patientId}/notes`, { note: notes })
-            .then(response => {
-                setExistingNotes([...existingNotes, response.data]);
-                setNotes("");
-            })
-            .catch(error => console.error("Error saving note:", error));
-    };
+  if (!patient) {
+    return <div className="text-center mt-5 fs-5 fw-semibold">Loading...</div>;
+  }
 
-    if (!patient) return <p>Loading...</p>;
+  return (
+    <div className="container mt-5">
+      <div className="card shadow-lg p-4">
+        <h2 className="text-primary fw-bold">{patient.name}</h2>
+        <p className="text-muted">{patient.email}</p>
 
-    return (
-        <div>
-            <h2>Patient Profile</h2>
-            <p><strong>Name:</strong> {patient.name}</p>
-            <p><strong>Email:</strong> {patient.email}</p>
-
-            <h3>Doctor Notes</h3>
-            <textarea 
-                value={notes} 
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="Write notes here..."
-                rows="4"
-                cols="50"
-            />
-            <button onClick={handleSaveNote}>Save Note</button>
-
-            <h3>Previous Notes</h3>
-            <ul>
-                {existingNotes.map((note, index) => (
-                    <li key={index}>{note.text} - <em>{new Date(note.timestamp).toLocaleString()}</em></li>
-                ))}
-            </ul>
-
-            {/* View Symptoms Button */}
-            <button onClick={() => navigate(`/patients/${patientId}/symptoms`)}>View Symptoms</button>
-        </div>
-    );
+        <h3 className="fw-semibold mt-4">Symptom History</h3>
+        {symptoms.length > 0 ? (
+          <ul className="list-group mt-3">
+            {symptoms.map((symptom, index) => (
+              <li key={index} className="list-group-item">
+                <p><strong>Date:</strong> {new Date(symptom.timestamp).toLocaleDateString()}</p>
+                <p><strong>Pain Level:</strong> {symptom.painLevel}</p>
+                <p><strong>Bloating:</strong> {symptom.bloating ? "Yes" : "No"}</p>
+                <p><strong>Stress Level:</strong> {symptom.stressLevel}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="text-muted mt-3">No symptoms recorded.</p>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default PatientProfile;
