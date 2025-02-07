@@ -9,7 +9,7 @@ const PatientSymptoms = () => {
     const [errorMessage, setErrorMessage] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:5003/patients/${patientId}/symptoms`)
+        axios.get(`http://localhost:5002/patients/${patientId}/symptoms`)
             .then(response => {
                 setSymptoms(response.data);
                 setIsLoading(false);
@@ -32,7 +32,7 @@ const PatientSymptoms = () => {
                 <ul>
                     {symptoms.map((symptom) => (
                         <li key={symptom.id}>
-                            <strong>Date:</strong> {new Date(symptom.timestamp).toLocaleDateString()}<br />
+                            <strong>Date:</strong> {symptom.timestamp ? new Date(symptom.timestamp).toLocaleDateString() : "N/A"}<br />
                             <strong>Pain Level:</strong> {symptom.painLevel}<br />
                             <strong>Bloating:</strong> {symptom.bloating ? "Yes" : "No"}<br />
                             <strong>Stress Level:</strong> {symptom.stressLevel}

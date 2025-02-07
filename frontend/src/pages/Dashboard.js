@@ -2,10 +2,12 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { Bell, PersonCircle, ClipboardCheck, HouseDoor, BarChart, Gear } from "react-bootstrap-icons";
 import MyPatients from "./MyPatients"; 
+import DashboardHome from "./DashboardHome"; // Add this new component
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Dashboard = () => {
+  console.log("Dashboard is rendering"); 
   return (
     <div className="d-flex">
       {/* Sidebar */}
@@ -46,12 +48,11 @@ const Dashboard = () => {
           </div>
         </nav>
 
-        {/* Page Content  */}
+        {/* Page Content */}
         <div className="container-fluid p-4">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<DashboardHome />} />  {/* Fixed */}
             <Route path="/patients" element={<MyPatients />} />
-            {}
           </Routes>
         </div>
       </div>
@@ -60,3 +61,4 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+

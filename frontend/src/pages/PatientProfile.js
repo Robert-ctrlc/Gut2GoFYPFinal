@@ -4,6 +4,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const PatientProfile = () => {
+  console.log("PatientProfile is rendering");
   const { id } = useParams();
   const [patient, setPatient] = useState(null);
   const [symptoms, setSymptoms] = useState([]);
