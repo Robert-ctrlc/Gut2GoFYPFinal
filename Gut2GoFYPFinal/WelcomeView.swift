@@ -9,7 +9,7 @@ struct WelcomeView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 10) {
                 HStack {
                     VStack(alignment: .leading, spacing: 5) {
                         Text("Welcome Back,")
@@ -20,7 +20,7 @@ struct WelcomeView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.primary)
                     }
-                    Spacer()
+                    Spacer(minLength: 5)
                     Circle()
                         .fill(Color.blue.opacity(0.2))
                         .frame(width: 60, height: 60)
@@ -50,13 +50,33 @@ struct WelcomeView: View {
                         backgroundColor: Color.orange.opacity(0.2),
                         destination: AnyView(SymptomHistoryView())
                     )
-                    
+                    DashboardCard(
+                        title: "Track Medications",
+                        description: "Log your medication usage.",
+                        icon: "pills.fill", 
+                        backgroundColor: Color.purple.opacity(0.2),
+                        destination: AnyView(MedicationLoggingView())
+                    )
+                    DashboardCard(
+                        title: "Medication Logs",
+                        description: "View your medication history",
+                        icon: "pills",
+                        backgroundColor: Color.purple.opacity(0.2),
+                        destination: AnyView(MedicationHistoryView())
+                    )
+                    DashboardCard(
+                        title: "Reports",
+                        description: "View trends and summaries of your symptoms.",
+                        icon: "chart.line.uptrend.xyaxis",
+                        backgroundColor: Color.green.opacity(0.2),
+                        destination: AnyView(ReportsView())
+                    )
                        
                     
                 }
-                .padding()
                 
-                Spacer()
+                
+                Spacer(minLength: 5)
                 
                 Button(action: logOut) {
                     Text("Log Out")
