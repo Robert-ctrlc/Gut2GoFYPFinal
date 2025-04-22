@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { Bell, PersonCircle, ClipboardCheck, HouseDoor, BarChart, Gear } from "react-bootstrap-icons";
 import MyPatients from "./MyPatients"; 
-import DashboardHome from "./DashboardHome"; // Add this new component
+import DashboardHome from "./DashboardHome"; 
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -34,6 +34,7 @@ const Dashboard = () => {
               <Gear size={20} className="me-2" /> Settings
             </Link>
           </li>
+          
         </ul>
       </div>
 

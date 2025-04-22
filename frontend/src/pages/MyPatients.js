@@ -21,7 +21,6 @@ const MyPatients = () => {
     password: "",
   });
 
-  // Fetch patients from the backend
   useEffect(() => {
     axios
       .get("http://localhost:5002/patients")
@@ -30,25 +29,23 @@ const MyPatients = () => {
   }, []);
 
   const filteredPatients = patients.filter((patient) =>
-  (patient.name || "").toLowerCase().includes(searchQuery.toLowerCase())
-);
+    (patient.name || "").toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
-  // Handle Adding a New Patient
   const handleAddPatient = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:5002/patients", newPatient)
       .then((response) => {
         setPatients([...patients, response.data]);
-        setShowModal(false); // Close the modal after adding
-        setNewPatient({ name: "", email: "", password: "" }); // Reset form
+        setShowModal(false);
+        setNewPatient({ name: "", email: "", password: "" });
       })
       .catch((error) => console.error("Error adding patient:", error));
   };
 
   return (
     <div className="container-fluid p-4">
-      {/* Top Bar */}
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3 className="fw-bold">My Patients</h3>
         <div className="d-flex">
@@ -73,7 +70,6 @@ const MyPatients = () => {
         </div>
       </div>
 
-      {/* Patient Cards */}
       <div className="row">
         {filteredPatients.map((patient) => (
           <div key={patient.id} className="col-md-6 mb-4">
@@ -95,29 +91,22 @@ const MyPatients = () => {
                 <ThreeDotsVertical size={20} className="text-secondary" />
               </div>
 
-              {/* Patient Options */}
               <ul className="list-group list-group-flush mt-3">
                 <li className="list-group-item d-flex align-items-center">
                   <ClipboardCheck size={18} className="me-2 text-primary" />
                   <Link to={`/patients/${patient.id}/symptoms`} className="text-decoration-none text-dark">
-  View Symptoms
-</Link>
+                    View Symptoms
+                  </Link>
                 </li>
                 <li className="list-group-item d-flex align-items-center">
                   <Capsule size={18} className="me-2 text-primary" />
-                  <Link
-                    to={`/patients/${patient.id}/medication`}
-                    className="text-decoration-none text-dark"
-                  >
+                  <Link to={`/patients/${patient.id}/medication`} className="text-decoration-none text-dark">
                     Medication Plan
                   </Link>
                 </li>
                 <li className="list-group-item d-flex align-items-center">
                   <ListUl size={18} className="me-2 text-primary" />
-                  <Link
-                    to={`/patients/${patient.id}/meal`}
-                    className="text-decoration-none text-dark"
-                  >
+                  <Link to={`/patients/${patient.id}/meal`} className="text-decoration-none text-dark">
                     Meal Plan
                   </Link>
                 </li>
@@ -127,16 +116,12 @@ const MyPatients = () => {
         ))}
       </div>
 
-      {/* Modal for Adding New Patient */}
       {showModal && (
         <div
           className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center"
           style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", zIndex: 1050 }}
         >
-          <div
-            className="bg-white p-4 rounded shadow"
-            style={{ width: "400px" }}
-          >
+          <div className="bg-white p-4 rounded shadow" style={{ width: "400px" }}>
             <h4 className="mb-3">Add New Patient</h4>
             <form onSubmit={handleAddPatient}>
               <div className="mb-3">
@@ -145,9 +130,7 @@ const MyPatients = () => {
                   type="text"
                   className="form-control"
                   value={newPatient.name}
-                  onChange={(e) =>
-                    setNewPatient({ ...newPatient, name: e.target.value })
-                  }
+                  onChange={(e) => setNewPatient({ ...newPatient, name: e.target.value })}
                   required
                 />
               </div>
@@ -157,9 +140,7 @@ const MyPatients = () => {
                   type="email"
                   className="form-control"
                   value={newPatient.email}
-                  onChange={(e) =>
-                    setNewPatient({ ...newPatient, email: e.target.value })
-                  }
+                  onChange={(e) => setNewPatient({ ...newPatient, email: e.target.value })}
                   required
                 />
               </div>
@@ -169,18 +150,12 @@ const MyPatients = () => {
                   type="password"
                   className="form-control"
                   value={newPatient.password}
-                  onChange={(e) =>
-                    setNewPatient({ ...newPatient, password: e.target.value })
-                  }
+                  onChange={(e) => setNewPatient({ ...newPatient, password: e.target.value })}
                   required
                 />
               </div>
               <div className="d-flex justify-content-end">
-                <button
-                  type="button"
-                  className="btn btn-secondary me-2"
-                  onClick={() => setShowModal(false)}
-                >
+                <button type="button" className="btn btn-secondary me-2" onClick={() => setShowModal(false)}>
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">
