@@ -1,11 +1,18 @@
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
+import HealthKit
 
 struct WelcomeView: View {
     var user: User
     @State private var userName: String = "User"
     @State private var showLogin = false
+    @State private var isSheetPresented = false
+    @State private var selectedPlan: PlanType = .meal
+
+    enum PlanType {
+        case meal, medication
+    }
 
     var body: some View {
         NavigationStack {
@@ -53,7 +60,7 @@ struct WelcomeView: View {
                     DashboardCard(
                         title: "Track Medications",
                         description: "Log your medication usage.",
-                        icon: "pills.fill", 
+                        icon: "pills.fill",
                         backgroundColor: Color.purple.opacity(0.2),
                         destination: AnyView(MedicationLoggingView())
                     )
@@ -71,10 +78,43 @@ struct WelcomeView: View {
                         backgroundColor: Color.green.opacity(0.2),
                         destination: AnyView(ReportsView())
                     )
-                       
                     
+                    // Meal & Medication Plan Buttons at the bottom of the screen (smaller size)
+                    HStack {
+                        Button(action: {
+                            selectedPlan = .meal
+                            isSheetPresented.toggle()
+                        }) {
+                            VStack {
+                                Image(systemName: "fork.knife")
+                                    .font(.title2)
+                                Text("Meal Plan")
+                                    .font(.footnote)
+                            }
+                            .padding(10)
+                            .background(Color.green.opacity(0.3))
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                        }
+
+                        Button(action: {
+                            selectedPlan = .medication
+                            isSheetPresented.toggle()
+                        }) {
+                            VStack {
+                                Image(systemName: "pills.fill")
+                                    .font(.title2)
+                                Text("Medication Plan")
+                                    .font(.footnote)
+                            }
+                            .padding(10)
+                            .background(Color.purple.opacity(0.3))
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                        }
+                    }
+                    .padding(.bottom)
                 }
-                
                 
                 Spacer(minLength: 5)
                 
@@ -91,9 +131,27 @@ struct WelcomeView: View {
             }
             .padding()
             .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all))
-            .onAppear(perform: fetchUserData)
+            .onAppear {
+                fetchUserData()
+                requestAndSyncHealthData()
+            }
             .fullScreenCover(isPresented: $showLogin) {
                 LoginView()
+            }
+            // Sheet to show the Meal or Medication Plan when clicked
+            .sheet(isPresented: $isSheetPresented) {
+                VStack {
+                    Text(selectedPlan == .meal ? "Your 7-Day Meal Plan" : "Your 7-Day Medication Plan")
+                        .font(.title)
+                        .padding()
+
+                    if selectedPlan == .meal {
+                        MealPlanView()
+                    } else {
+                        MedicationPlanView()
+                    }
+                }
+                .padding()
             }
         }
     }
@@ -113,6 +171,16 @@ struct WelcomeView: View {
         }
     }
     
+    private func requestAndSyncHealthData() {
+        HealthKitManager.shared.requestAuthorization { success in
+            if success {
+                HealthKitManager.shared.fetchAndLogHealthData()
+            } else {
+                print("HealthKit access denied.")
+            }
+        }
+    }
+    
     private func logOut() {
         do {
             try Auth.auth().signOut()
@@ -120,5 +188,43 @@ struct WelcomeView: View {
         } catch let error {
             print("Failed to log out: \(error.localizedDescription)")
         }
+    }
+}
+
+struct MealPlanView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            ForEach(1..<8) { day in
+                Text("Day \(day):")
+                    .font(.headline)
+                    .padding(.top)
+                
+               
+                Text("• Lunch: Grilled chicken with vegetables")
+                Text("• Dinner: Salmon with quinoa")
+            }
+        }
+        .padding()
+        .background(Color.green.opacity(0.1))
+        .cornerRadius(10)
+    }
+}
+
+struct MedicationPlanView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            ForEach(1..<8) { day in
+                Text("Day \(day):")
+                    .font(.headline)
+                    .padding(.top)
+                
+              
+                Text("• Medication: Probiotics - 1 Capsule per day")
+                
+            }
+        }
+        .padding()
+        .background(Color.purple.opacity(0.1))
+        .cornerRadius(10)
     }
 }

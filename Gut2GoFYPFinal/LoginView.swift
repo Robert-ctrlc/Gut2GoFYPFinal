@@ -60,7 +60,7 @@ struct LoginView: View {
                 
                 .navigationDestination(isPresented: $isLoggedIn) {
                     if let user = loggedInUser {
-                        WelcomeView(user: user) // Pass the user to WelcomeView
+                        WelcomeView(user: user) 
                     }
                 }
             }
@@ -84,6 +84,8 @@ struct LoginView: View {
             }
             self.loginStatusMessage = "Successfully logged in!"
             fetchLoggedInUser()
+            scheduleMedicationReminder()
+            
         }
     }
     
@@ -123,6 +125,23 @@ struct LoginView: View {
             } else {
                 print("User document does not exist or failed to fetch: \(error?.localizedDescription ?? "Unknown error")")
             }
+        }
+    }
+}
+    func scheduleMedicationReminder() {
+        let content = UNMutableNotificationContent()
+        content.title = "💊 Time to log your meds"
+        content.body = "Don’t forget to log today’s medication in Gut2Go!"
+        content.sound = .default
+
+       
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(request) { error in
+        if let error = error {
+            print("Failed to schedule notification: \(error)")
         }
     }
 }

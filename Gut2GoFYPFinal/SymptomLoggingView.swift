@@ -9,7 +9,11 @@ struct SymptomLoggingView: View {
     @State private var bowelMovements = "Normal"
     @State private var logDate = Date()
     @State private var logStatusMessage = ""
-
+    
+ 
+    @State private var userSymptoms: String = ""
+    @State private var recommendation: String = ""
+    
     let bowelMovementOptions = ["Normal", "Diarrhea", "Constipation"]
 
     var body: some View {
@@ -38,6 +42,41 @@ struct SymptomLoggingView: View {
 
             DatePicker("Log Date", selection: $logDate, displayedComponents: .date)
 
+            
+            TextField("Enter your symptoms here...", text: $userSymptoms)
+                .padding()
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(height: 60)
+            
+           
+            Button(action: getRecommendation) {
+                Text("Get A Treatment Recommendation")
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
+
+            
+            if !recommendation.isEmpty {
+                            VStack(alignment: .leading) {
+                                Text("Based on your symptoms, we recommend the following treatment:")
+                                    .font(.headline)
+                                    .padding(.top)
+
+                                
+                                VStack(alignment: .leading) {
+                                    ForEach(recommendation.split(separator: ","), id: \.self) { treatment in
+                                        Text("• \(treatment.trimmingCharacters(in: .whitespaces))")
+                                            .foregroundColor(.green)
+                                            .padding(.leading, 10)
+                                    }
+                                }
+                                .padding(.top, 10)
+                            }
+                            .padding()
+                        }
+
             Button(action: saveSymptomLog) {
                 Text("Save Log")
                     .padding()
@@ -52,6 +91,63 @@ struct SymptomLoggingView: View {
         .padding()
     }
 
+   
+    private func getRecommendation() {
+        
+        guard !userSymptoms.isEmpty else {
+            recommendation = "Please enter your symptoms."
+            return
+        }
+        
+       
+        guard let url = URL(string: "http://127.0.0.1:5002/get_recommendation") else {
+            recommendation = "Invalid URL."
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+       
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+       
+        let body: [String: Any] = ["symptoms": userSymptoms]
+        let jsonData = try? JSONSerialization.data(withJSONObject: body, options: .prettyPrinted)
+        request.httpBody = jsonData
+        
+       
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                DispatchQueue.main.async {
+                    recommendation = "Error: \(error.localizedDescription)"
+                }
+                return
+            }
+            
+            if let data = data {
+                do {
+                   
+                    if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                        let recommendationText = jsonResponse["recommendation"] as? String ?? "No recommendations found."
+                        
+                       
+                        DispatchQueue.main.async {
+                            recommendation = recommendationText
+                        }
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        recommendation = "Error parsing response."
+                    }
+                }
+            }
+        }
+        
+        task.resume()
+    }
+
+   
     private func saveSymptomLog() {
         guard let userId = Auth.auth().currentUser?.uid else {
             logStatusMessage = "User not logged in!"
@@ -65,6 +161,7 @@ struct SymptomLoggingView: View {
             "stressLevel": Int(stressLevel),
             "bowelMovements": bowelMovements,
             "logDate": logDate,
+            "userSymptoms": userSymptoms,
             "timestamp": FieldValue.serverTimestamp()
         ]
 
