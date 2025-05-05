@@ -1,0 +1,48 @@
+[
+    [
+        "I have been taking probiotics for a week and since starting I have been constipated. How long after I stop will I return to normal?",
+        {
+            "entities": [
+                [
+                    19,
+                    29,
+                    "TREATMENT"
+                ]
+            ]
+        }
+    ],
+    [
+        "I\u2019ve been using Florastor for a year, and they\u2019re genuinely the only probiotic that\u2019s helped me after struggling with horrible digestive issues.",
+        {
+            "entities": [
+                [
+                    16,
+                    25,
+                    "TREATMENT"
+                ]
+            ]
+        }
+    ],
+    [
+        "Has anyone tried L casei probiotic for issues with slower motility and trouble with passing gas?",
+        {
+            "entities": [
+                [
+                    92,
+                    95,
+                    "SYMPTOM"
+                ],
+                [
+                    51,
+                    66,
+                    "SYMPTOM"
+                ],
+                [
+                    17,
+                    24,
+                    "TREATMENT"
+                ]
+            ]
+        }
+    ]
+]
