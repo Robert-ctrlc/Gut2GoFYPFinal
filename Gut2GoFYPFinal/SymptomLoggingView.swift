@@ -60,7 +60,7 @@ struct SymptomLoggingView: View {
             
             if !recommendation.isEmpty {
                             VStack(alignment: .leading) {
-                                Text("Based on your symptoms, we recommend the following treatment:")
+                                Text("Based on your symptoms, we recommend :")
                                     .font(.headline)
                                     .padding(.top)
 
@@ -100,7 +100,7 @@ struct SymptomLoggingView: View {
         }
         
        
-        guard let url = URL(string: "http://127.0.0.1:5002/get_recommendation") else {
+        guard let url = URL(string: "http://127.0.0.1:5003/get_recommendation") else {
             recommendation = "Invalid URL."
             return
         }

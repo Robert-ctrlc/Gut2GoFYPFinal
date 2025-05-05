@@ -38,9 +38,9 @@ struct WelcomeView: View {
                         )
                 }
                 .padding()
-                
+
                 Divider()
-                
+
                 VStack(spacing: 15) {
                     DashboardCard(
                         title: "Log Symptoms",
@@ -49,7 +49,7 @@ struct WelcomeView: View {
                         backgroundColor: Color.green.opacity(0.2),
                         destination: AnyView(SymptomLoggingView())
                     )
-                    
+
                     DashboardCard(
                         title: "View History",
                         description: "Check your past logged symptoms.",
@@ -57,6 +57,7 @@ struct WelcomeView: View {
                         backgroundColor: Color.orange.opacity(0.2),
                         destination: AnyView(SymptomHistoryView())
                     )
+
                     DashboardCard(
                         title: "Track Medications",
                         description: "Log your medication usage.",
@@ -64,6 +65,7 @@ struct WelcomeView: View {
                         backgroundColor: Color.purple.opacity(0.2),
                         destination: AnyView(MedicationLoggingView())
                     )
+
                     DashboardCard(
                         title: "Medication Logs",
                         description: "View your medication history",
@@ -71,6 +73,7 @@ struct WelcomeView: View {
                         backgroundColor: Color.purple.opacity(0.2),
                         destination: AnyView(MedicationHistoryView())
                     )
+
                     DashboardCard(
                         title: "Reports",
                         description: "View trends and summaries of your symptoms.",
@@ -78,8 +81,7 @@ struct WelcomeView: View {
                         backgroundColor: Color.green.opacity(0.2),
                         destination: AnyView(ReportsView())
                     )
-                    
-                    // Meal & Medication Plan Buttons at the bottom of the screen (smaller size)
+
                     HStack {
                         Button(action: {
                             selectedPlan = .meal
@@ -115,9 +117,9 @@ struct WelcomeView: View {
                     }
                     .padding(.bottom)
                 }
-                
+
                 Spacer(minLength: 5)
-                
+
                 Button(action: logOut) {
                     Text("Log Out")
                         .font(.headline)
@@ -138,13 +140,11 @@ struct WelcomeView: View {
             .fullScreenCover(isPresented: $showLogin) {
                 LoginView()
             }
-            // Sheet to show the Meal or Medication Plan when clicked
             .sheet(isPresented: $isSheetPresented) {
                 VStack {
                     Text(selectedPlan == .meal ? "Your 7-Day Meal Plan" : "Your 7-Day Medication Plan")
                         .font(.title)
                         .padding()
-
                     if selectedPlan == .meal {
                         MealPlanView()
                     } else {
@@ -155,76 +155,141 @@ struct WelcomeView: View {
             }
         }
     }
-    
+
     private func fetchUserData() {
         guard let uid = Auth.auth().currentUser?.uid else {
             showLogin = true
             return
         }
-        
-        Firestore.firestore().collection("users").document(uid).getDocument { document, error in
-            if let document = document, document.exists, let data = document.data() {
-                self.userName = data["name"] as? String ?? "User"
-            } else {
-                print("User document does not exist or failed to fetch: \(error?.localizedDescription ?? "Unknown error")")
+        Firestore.firestore().collection("users").document(uid).getDocument { document, _ in
+            if let data = document?.data() {
+                userName = data["name"] as? String ?? "User"
             }
         }
     }
-    
+
     private func requestAndSyncHealthData() {
         HealthKitManager.shared.requestAuthorization { success in
             if success {
                 HealthKitManager.shared.fetchAndLogHealthData()
-            } else {
-                print("HealthKit access denied.")
             }
         }
     }
-    
+
     private func logOut() {
-        do {
-            try Auth.auth().signOut()
-            showLogin = true
-        } catch let error {
-            print("Failed to log out: \(error.localizedDescription)")
-        }
+        try? Auth.auth().signOut()
+        showLogin = true
     }
 }
 
 struct MealPlanView: View {
+    @State private var mealPlan: [String: [String: String]] = [:]
+    @State private var loading = true
+
     var body: some View {
         VStack(alignment: .leading) {
-            ForEach(1..<8) { day in
-                Text("Day \(day):")
-                    .font(.headline)
-                    .padding(.top)
-                
-               
-                Text("• Lunch: Grilled chicken with vegetables")
-                Text("• Dinner: Salmon with quinoa")
+            if loading {
+                ProgressView("Loading meal plan…")
+                    .padding()
+            } else if mealPlan.isEmpty {
+                Text("No meal plan found.")
+                    .padding()
+            } else {
+                ForEach(mealPlan.keys.sorted(), id: \.self) { day in
+                    VStack(alignment: .leading) {
+                        Text(day)
+                            .font(.headline)
+                            .padding(.top, 8)
+                        if let meals = mealPlan[day] {
+                            if let breakfast = meals["Breakfast"] {
+                                Text("• Breakfast: \(breakfast)")
+                            }
+                            if let lunch = meals["Lunch"] {
+                                Text("• Lunch: \(lunch)")
+                            }
+                            if let dinner = meals["Dinner"] {
+                                Text("• Dinner: \(dinner)")
+                            }
+                        }
+                    }
+                }
+                .padding(.horizontal)
             }
         }
+        .onAppear(perform: fetchMealPlan)
         .padding()
         .background(Color.green.opacity(0.1))
         .cornerRadius(10)
     }
+
+    private func fetchMealPlan() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            loading = false
+            return
+        }
+        let db = Firestore.firestore()
+        db.collection("mealPlans")
+            .whereField("patientId", isEqualTo: uid)
+            .order(by: "createdAt", descending: true)
+            .limit(to: 1)
+            .getDocuments { snapshot, _ in
+                loading = false
+                if let doc = snapshot?.documents.first,
+                   let data = doc.data()["mealPlan"] as? [String: [String: String]] {
+                    mealPlan = data
+                }
+            }
+    }
 }
 
 struct MedicationPlanView: View {
+    @State private var medPlan: [String: [String: String]] = [:]
+    @State private var loading = true
+
     var body: some View {
         VStack(alignment: .leading) {
-            ForEach(1..<8) { day in
-                Text("Day \(day):")
-                    .font(.headline)
-                    .padding(.top)
-                
-              
-                Text("• Medication: Probiotics - 1 Capsule per day")
-                
+            if loading {
+                ProgressView("Loading medication plan…")
+                    .padding()
+            } else if medPlan.isEmpty {
+                Text("No medication plan found.")
+                    .padding()
+            } else {
+                ForEach(medPlan.keys.sorted(), id: \.self) { day in
+                    VStack(alignment: .leading) {
+                        Text(day)
+                            .font(.headline)
+                            .padding(.top, 8)
+                        if let meds = medPlan[day], let medication = meds["Medication"] {
+                            Text("• Medication: \(medication)")
+                        }
+                    }
+                }
+                .padding(.horizontal)
             }
         }
+        .onAppear(perform: fetchMedPlan)
         .padding()
         .background(Color.purple.opacity(0.1))
         .cornerRadius(10)
+    }
+
+    private func fetchMedPlan() {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            loading = false
+            return
+        }
+        let db = Firestore.firestore()
+        db.collection("medicationPlans")
+            .whereField("patientId", isEqualTo: uid)
+            .order(by: "createdAt", descending: true)
+            .limit(to: 1)
+            .getDocuments { snapshot, _ in
+                loading = false
+                if let doc = snapshot?.documents.first,
+                   let data = doc.data()["medicationPlan"] as? [String: [String: String]] {
+                    medPlan = data
+                }
+            }
     }
 }
