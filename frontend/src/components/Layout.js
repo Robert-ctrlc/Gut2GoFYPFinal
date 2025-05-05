@@ -1,13 +1,10 @@
+// Layout.js
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
-import { Bell, PersonCircle, ClipboardCheck, HouseDoor, BarChart, Gear } from "react-bootstrap-icons";
-import MyPatients from "./MyPatients"; 
-import DashboardHome from "./DashboardHome"; 
-
+import { Link } from "react-router-dom";
+import { Bell, PersonCircle, HouseDoor, ClipboardCheck, BarChart, Gear } from "react-bootstrap-icons"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Dashboard = () => {
-  console.log("Dashboard is rendering"); 
+const Layout = ({ children }) => {
   return (
     <div className="d-flex">
       {/* Sidebar */}
@@ -29,7 +26,6 @@ const Dashboard = () => {
               <BarChart size={20} className="me-2" /> Reports
             </Link>
           </li>
-          
         </ul>
       </div>
 
@@ -37,7 +33,7 @@ const Dashboard = () => {
       <div className="flex-grow-1">
         {/* Top Navbar */}
         <nav className="navbar navbar-light bg-white shadow-sm mb-4 px-4 py-3 d-flex justify-content-between">
-          <h3 className="fw-bold text-dark">Dashboard</h3>
+          <h3 className="fw-bold text-dark">Gut2Go</h3>
           <div className="d-flex align-items-center">
             <Bell size={22} className="me-3" />
             <PersonCircle size={30} />
@@ -46,15 +42,11 @@ const Dashboard = () => {
 
         {/* Page Content */}
         <div className="container-fluid p-4">
-          <Routes>
-            <Route path="/" element={<DashboardHome />} />  
-            <Route path="/patients" element={<MyPatients />} />
-          </Routes>
+          {children}
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
-
+export default Layout;

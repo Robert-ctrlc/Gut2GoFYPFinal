@@ -26,12 +26,6 @@ const Sidebar = () => {
               <span>Reports</span>
             </Link>
           </li>
-          <li>
-            <Link to="/settings" className="flex items-center space-x-3 p-3 rounded-lg hover:bg-gray-800">
-              <CogIcon className="w-6 h-6" />
-              <span>Settings</span>
-            </Link>
-          </li>
         </ul>
       </nav>
 

@@ -4,6 +4,7 @@ import PatientProfile from "./pages/PatientProfile";
 import MyPatients from "./pages/MyPatients"; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PatientSymptoms from "./pages/PatientSymptoms";
+import Reports from "./pages/Report";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/patients" element={<MyPatients />} />
-        <Route path="/patients/:id" element={<PatientProfile />} />
+        <Route path="/patients/:patientId/profile" element={<PatientProfile />} />
         <Route path="/patients/:patientId/symptoms" element={<PatientSymptoms />} />
+        <Route path="/reports" element={<Reports />} />
       </Routes>
     </Router>
   );

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Layout from "../components/Layout";
 import {
   Search,
   Plus,
   ThreeDotsVertical,
-  ClipboardCheck,
-  Capsule,
-  ListUl,
 } from "react-bootstrap-icons";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -38,13 +36,14 @@ const MyPatients = () => {
       .post("http://localhost:5002/patients", newPatient)
       .then((response) => {
         setPatients([...patients, response.data]);
-        setShowModal(false);
-        setNewPatient({ name: "", email: "", password: "" });
+        setShowModal(false); // Close the modal after adding
+        setNewPatient({ name: "", email: "", password: "" }); // Reset form
       })
       .catch((error) => console.error("Error adding patient:", error));
   };
 
   return (
+    <Layout>
     <div className="container-fluid p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3 className="fw-bold">My Patients</h3>
@@ -60,13 +59,7 @@ const MyPatients = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
-          <button
-            className="btn btn-primary d-flex align-items-center"
-            onClick={() => setShowModal(true)}
-          >
-            <Plus size={18} className="me-2" />
-            Add New Patient
-          </button>
+         
         </div>
       </div>
 
@@ -93,21 +86,8 @@ const MyPatients = () => {
 
               <ul className="list-group list-group-flush mt-3">
                 <li className="list-group-item d-flex align-items-center">
-                  <ClipboardCheck size={18} className="me-2 text-primary" />
-                  <Link to={`/patients/${patient.id}/symptoms`} className="text-decoration-none text-dark">
-                    View Symptoms
-                  </Link>
-                </li>
-                <li className="list-group-item d-flex align-items-center">
-                  <Capsule size={18} className="me-2 text-primary" />
-                  <Link to={`/patients/${patient.id}/medication`} className="text-decoration-none text-dark">
-                    Medication Plan
-                  </Link>
-                </li>
-                <li className="list-group-item d-flex align-items-center">
-                  <ListUl size={18} className="me-2 text-primary" />
-                  <Link to={`/patients/${patient.id}/meal`} className="text-decoration-none text-dark">
-                    Meal Plan
+                  <Link to={`/patients/${patient.id}/profile`} className="text-decoration-none text-dark">
+                    View User Profile
                   </Link>
                 </li>
               </ul>
@@ -155,7 +135,11 @@ const MyPatients = () => {
                 />
               </div>
               <div className="d-flex justify-content-end">
-                <button type="button" className="btn btn-secondary me-2" onClick={() => setShowModal(false)}>
+                <button
+                  type="button"
+                  className="btn btn-secondary me-2"
+                  onClick={() => setShowModal(false)}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn btn-primary">
@@ -167,6 +151,7 @@ const MyPatients = () => {
         </div>
       )}
     </div>
+    </Layout>
   );
 };
 
