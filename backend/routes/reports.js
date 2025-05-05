@@ -4,84 +4,77 @@ const admin = require('firebase-admin');
 
 router.get('/', async (req, res) => {
   try {
-    const patientId = req.query.patientId;  // Get the patientId (Firebase UID)
-    let logs = [];
-
+    const patientId = req.query.patientId;
     let snapshot;
-
     if (patientId) {
-      snapshot = await admin.firestore()
-        .collection('symptoms')  // Root-level symptoms collection
-        .doc(patientId)  // Patient's UID as document ID
-        .collection('logs')  // Query the logs sub-collection for the patient
+      snapshot = await admin
+        .firestore()
+        .collection('symptoms')
+        .doc(patientId)
+        .collection('logs')
         .get();
     } else {
-      snapshot = await admin.firestore().collectionGroup('logs').get(); // Query logs across all users
+      snapshot = await admin
+        .firestore()
+        .collectionGroup('logs')
+        .get();
     }
-
-    snapshot.forEach(doc => {
-      const logData = doc.data();
-      if (logData.timestamp && logData.timestamp.toDate) {
-        logData.timestamp = logData.timestamp.toDate();
-      }
-      logs.push(logData);
+    const allLogs = snapshot.docs.map(doc => {
+      const data = doc.data();
+      return {
+        ...data,
+        date: data.timestamp.toDate(),
+      };
     });
-
-    if (logs.length === 0) {
-      console.log('No logs found for this patient.');
-    }
-
-    const groupedByDay = {};
-    logs.forEach(log => {
-      const dayKey = log.timestamp.toISOString().split('T')[0];
-      if (!groupedByDay[dayKey]) {
-        groupedByDay[dayKey] = [];
-      }
-      groupedByDay[dayKey].push(log);
+    const grouped = {};
+    allLogs.forEach(log => {
+      const day = log.date.toISOString().split('T')[0];
+      if (!grouped[day]) grouped[day] = [];
+      grouped[day].push(log);
     });
-
-    let timeSeries = [];
-    for (const [day, dayLogs] of Object.entries(groupedByDay)) {
-      const avgPain = dayLogs.reduce((sum, log) => sum + (log.painLevel || 0), 0) / dayLogs.length;
-      const avgStress = dayLogs.reduce((sum, log) => sum + (log.stressLevel || 0), 0) / dayLogs.length;
-      const diarrheaCount = dayLogs.filter(log => log.bowelMovements === 'Diarrhea').length;
-      const constipationCount = dayLogs.filter(log => log.bowelMovements === 'Constipation').length;
-      timeSeries.push({
+    const timeSeries = Object.keys(grouped).sort().map(day => {
+      const logs = grouped[day];
+      const avgPain = logs.reduce((sum, log) => sum + (log.painLevel || 0), 0) / logs.length;
+      const avgStress = logs.reduce((sum, log) => sum + (log.stressLevel || 0), 0) / logs.length;
+      const diarrheaCount = logs.filter(log => log.bowelMovements === 'Diarrhea').length;
+      const constipationCount = logs.filter(log => log.bowelMovements === 'Constipation').length;
+      return {
         date: day,
         avgPain,
         avgStress,
         diarrheaCount,
         constipationCount,
-        logsCount: dayLogs.length
-      });
-    }
-
-    timeSeries.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-    let totalPain = 0, totalStress = 0, totalLogs = 0;
-    logs.forEach(log => {
-      totalPain += (log.painLevel || 0);
-      totalStress += (log.stressLevel || 0);
-      totalLogs += 1;
+        logsCount: logs.length,
+      };
     });
-
-    const summary = {
-      avgPain: totalLogs > 0 ? (totalPain / totalLogs).toFixed(2) : 0,
-      avgStress: totalLogs > 0 ? (totalStress / totalLogs).toFixed(2) : 0,
-      logsCount: totalLogs,
-      mostCommonBowel: (() => {
-        let diarrheaCount = logs.filter(log => log.bowelMovements === 'Diarrhea').length;
-        let constipationCount = logs.filter(log => log.bowelMovements === 'Constipation').length;
-        if (diarrheaCount > constipationCount) return 'Diarrhea';
-        else if (constipationCount > diarrheaCount) return 'Constipation';
-        else return 'Equal/Unknown';
-      })()
+    const logsCount = allLogs.length;
+    const totalPain = allLogs.reduce((sum, log) => sum + (log.painLevel || 0), 0);
+    const totalStress = allLogs.reduce((sum, log) => sum + (log.stressLevel || 0), 0);
+    const bowelCounts = {
+      diarrhea: allLogs.filter(log => log.bowelMovements === 'Diarrhea').length,
+      constipation: allLogs.filter(log => log.bowelMovements === 'Constipation').length,
     };
-
-    return res.json({ timeSeries, summary });
+    const totalNormal = logsCount - bowelCounts.diarrhea - bowelCounts.constipation;
+    const bowelDistribution = {
+      diarrhea: bowelCounts.diarrhea,
+      constipation: bowelCounts.constipation,
+      normal: totalNormal,
+    };
+    const mostCommonBowel = Object.entries(bowelDistribution).sort((a, b) => b[1] - a[1])[0][0];
+    const summary = {
+      avgPain: logsCount ? totalPain / logsCount : 0,
+      avgStress: logsCount ? totalStress / logsCount : 0,
+      logsCount,
+      mostCommonBowel,
+      bowelDistribution,
+      painStressPairs: allLogs.map(log => ({
+        x: log.painLevel || 0,
+        y: log.stressLevel || 0,
+      })),
+    };
+    res.json({ timeSeries, summary });
   } catch (error) {
-    console.error('Error in reports route: ', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: error.message });
   }
 });
 
